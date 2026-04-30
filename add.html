@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/add.css">
+    <script src="js/add.js"></script>
+</head>
+<body>
+    <header>
+        <h1 class="title">Add a New Recipe</h1>
+        <nav>
+            <button class="nav-btn" id="backBtn"> Back to Cookbook</button>
+        </nav>
+    </header>
+
+    <main> 
+        <form id="recipeForm" class="form-container">
+            <label for="recipeName">Recipe Name *</label>
+            <input type="text" id="recipeName" required placeholder="e.g Pasta Alfredo">
+
+            <label for="ingredients">Ingredients (at least 2) *</label>
+            <textarea id="ingredients" placeholder="Lst each ingredient on a new line" required></textarea>
+
+            <label for="instruction">instructions (numbered steps) *</label>
+            <textarea id="instruction" placeholder="1 Boil water/n2. Add pasta/n3. Stir sauce..." required></textarea>
+
+            <label for="hashtags">Hashtags *</label>
+            <input type="text" id="hashtags" placeholder="#spicy #italian #grilled" required>
+            <!-- Add this Button -->
+            <button type="submit" class="save-btn">Save Recipe</button>
+        </form>
+    </main>
+    
+</body>
+</html>
