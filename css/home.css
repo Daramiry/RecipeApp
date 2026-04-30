@@ -54,3 +54,20 @@ body {
 .enter-btn:hover {
   background: #b89263;
 }
+
+.fav-btn {
+  background: #d4b48a;
+  color: #4a3f35;
+  border: none;
+  border-radius: 8px;
+  padding: 12px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  margin-top: 10px;
+  width: 100%;
+  transition: background 0.3s;
+}
+
+.fav-btn:hover {
+  background: #c39a6b;
+}
