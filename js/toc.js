@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const favoritesBtn = document.getElementById("favoritesBtn");
     const homeBtn = document.getElementById("homeBtn");
     const searchInput = document.getElementById("searchInput");
-    const recipeGrid = document.getElementById("recipeGrid");
+    const recipeContainer = document.getElementById("recipeGrid");
 
     // --- Navigation ---
     addRecipeBtn.addEventListener("click", () => {
@@ -24,10 +24,10 @@ document.addEventListener("DOMContentLoaded", () => {
     let recipes = JSON.parse(localStorage.getItem("recipes")) || [];
 
     function displayRecipes(list) {
-        recipeGrid.innerHTML = "";
+        recipeContainer.innerHTML = "";
 
         if (list.length === 0) {
-            recipeGrid.innerHTML = "<p>No recipes found.</p>";
+            recipeContainer.innerHTML = "<p>No recipes found.</p>";
             return;
         }
 
@@ -35,11 +35,11 @@ document.addEventListener("DOMContentLoaded", () => {
             const card = document.createElement("div");
             card.className = "recipe-card";
             card.innerHTML = `
-                <h3>${recipe.name}</h3>
-                <p>${recipe.ingredients.split("\n")[0]}...</p>
-                <button class="view-btn" onclick="viewRecipe(${recipe.id})">View</button>
+                <h3>${recipe.title}</h3>
+                <p>${recipe.ingredients[0]}...</p>
+                <button class="view-btn" data-id="${recipe.id}">View</button>
             `;
-            recipeGrid.appendChild(card);
+            recipeContainer.appendChild(card);
         });
     }
 
@@ -48,13 +48,16 @@ document.addEventListener("DOMContentLoaded", () => {
     // --- Search Filter ---
     searchInput.addEventListener("input", (e) => {
         const query = e.target.value.toLowerCase();
-        const filtered = recipes.filter(r => r.name.toLowerCase().includes(query));
+        const filtered = recipes.filter(r => r.title.toLowerCase().includes(query));
         displayRecipes(filtered);
     });
-});
 
-// --- View Recipe Function ---
-function viewRecipe(id) {
-    localStorage.setItem("currentRecipe", id);
-    window.location.href = "view.html";
-}
+    // --- View Recipe Function ---
+    document.addEventListener("click", e => {
+        if (e.target.classList.contains("view-btn")) {
+            const id = e.target.dataset.id;
+            localStorage.setItem("selectedRecipe", id);
+            window.location.href = "view.html";
+        }
+    });
+});

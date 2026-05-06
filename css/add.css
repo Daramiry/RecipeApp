@@ -80,3 +80,47 @@ textarea {
 .save-btn:hover {
     background: #9c7750;
 }
+
+/* 🧁 Recently Added Section */
+.recent-section {
+  display: inline-block;           /* makes the box fit its content */
+  max-width: 90%;                  /* prevents it from getting too wide */
+  padding: 1rem 1.5rem;
+  background-color: #f8f3e9;
+  border: 1px solid #d8c7a1;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  font-family: 'Georgia', serif;
+  color: #4a3b2b;
+  margin-top: 2rem;
+}
+
+.recent-section h2 {
+  margin-bottom: 0.8rem;
+  font-size: 1.3rem;
+  color: #3b2a1a;
+  border-bottom: 1px solid #d8c7a1;
+  padding-bottom: 0.3rem;
+  text-align: left;
+}
+
+.recent-list {
+  display: inline-block;           /* keeps list compact */
+  min-width: 200px;                /* ensures it doesn’t collapse too small */
+  max-width: 100%;                 /* keeps it responsive */
+  padding-right: 0.5rem;
+}
+
+.recent-list p {
+  margin: 0.4rem 0;
+  padding: 0.4rem 0.6rem;
+  background-color: #fffaf3;
+  border-radius: 6px;
+  border: 1px solid #e0d3b8;
+  transition: background-color 0.3s ease;
+  width: fit-content;              /* ✅ adjusts width to text length */
+}
+
+.recent-list p:hover {
+  background-color: #f0e4c8;
+}
