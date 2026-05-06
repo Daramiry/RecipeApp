@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const card = document.createElement("div");
             card.className = "recipe-card";
             card.innerHTML = `
-                <h3>${recipe.title}</h3>
+                <h3>${recipe.name}</h3>
                 <p>${recipe.ingredients[0]}...</p>
                 <button class="view-btn" data-id="${recipe.id}">View</button>
             `;

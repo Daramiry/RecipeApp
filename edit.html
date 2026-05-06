@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/edit.css">
+    <script src="../js/edit.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Edit Your recipe</h1>
+    </header>
+
+    <main>
+        <form id="editForm">
+            <input type="text" id="editName" placeholder="Recipe Name"/>
+            <textarea id="editIngredients" placeholder="Ingredients (one per line)"></textarea>
+            <textarea id="editInstructions" placeholder="Instruction (one per line)"></textarea>
+            <input type="text" id="editHashtags" placeholder="Hashtags (space-seperated)"/>
+            
+            <div class="edit-actions">
+                <button type="submit">Save Changes</button>
+                <button type="button" id="deleteBtn">Delete Recipe</button>
+                <button type="button" id="cancelBtn">Cancel</button>
+            </div>
+        </form>
+    </main>
+    
+</body>
+</html>

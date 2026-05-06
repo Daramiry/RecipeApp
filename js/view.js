@@ -36,3 +36,9 @@ if (recipe) {
 backBtn.addEventListener("click", () => {
     window.location.href = "toc.html";
 });
+
+const editBtn = document.getElementById("editBtn");
+editBtn.addEventListener("click", () => {
+    localStorage.setItem("editRecipeId", selectedId);
+    window.location.href = "edit.html";
+});
