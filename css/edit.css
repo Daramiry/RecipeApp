@@ -1,0 +1,35 @@
+body {
+	background: var(--bg);
+	color: var(--text);
+	font-family: Georgia, serif;
+	margin: 0;
+}
+
+header {
+	background: var(--header-bg);
+	padding: 18px;
+	text-align: center;
+	box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+
+.form-container {
+	max-width: 700px;
+	margin: 24px auto;
+	background: var(--surface);
+	padding: 20px;
+	border-radius: 10px;
+	box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+}
+
+input, textarea {
+	width: 100%;
+	padding: 10px;
+	border-radius: 8px;
+	border: 1px solid var(--muted);
+	background: var(--input-bg);
+	color: var(--text);
+}
+
+.save-btn { background: var(--accent); color: white; border: none; padding: 10px 14px; border-radius: 8px; cursor: pointer; }
+.save-btn:hover { background: var(--accent-hover); }
+

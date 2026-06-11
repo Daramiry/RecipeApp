@@ -1,0 +1,110 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Georgia", serif;
+    background: var(--bg);
+    color: var(--text);
+}
+
+header {
+    text-align: center;
+    background: var(--header-bg);
+    padding: 20px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+
+.title {
+    margin: 0;
+    font-size: 2rem;
+}
+
+nav {
+    margin-top: 15px;
+}
+
+.nav-btn {
+    background: var(--accent);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 16px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.nav-btn:hover {
+    background: var(--accent-hover);
+}
+
+main {
+    padding: 24px;
+}
+
+.favorites-section {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.favorites-list {
+    display: grid;
+    gap: 18px;
+}
+
+.favorite-card {
+    background: var(--surface);
+    border-radius: 14px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    padding: 22px;
+    display: grid;
+    gap: 12px;
+}
+
+.favorite-card h2 {
+    margin: 0;
+    font-size: 1.4rem;
+}
+
+.favorite-card p {
+    margin: 0;
+    color: var(--muted);
+}
+
+.favorite-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.favorite-actions button {
+    border: none;
+    border-radius: 8px;
+    padding: 10px 14px;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+}
+
+.view-btn {
+    background: var(--accent-hover);
+    color: white;
+}
+
+.remove-btn {
+    background: var(--danger);
+    color: white;
+}
+
+button:hover {
+    transform: translateY(-1px);
+}
+
+.empty-state {
+    text-align: center;
+    font-size: 1.1rem;
+    color: var(--muted);
+    padding: 50px 20px;
+    background: var(--surface);
+    border-radius: 14px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+}

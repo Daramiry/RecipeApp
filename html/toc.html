@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script>/* apply saved theme immediately */(function(){try{if(localStorage.getItem('theme')==='dark')document.documentElement.classList.add('dark')}catch(e){}})();</script>
+    <link rel="stylesheet" href="../css/theme.css">
     <link rel="stylesheet" href="../css/toc.css">
     <script src="../js/toc.js" defer></script>
 </head>
@@ -16,7 +18,8 @@
             <button class="nav-btn" id="homeBtn">Go Back to Homepage</button>
         </nav>
         <div class="search-container">
-            <input type="text" id="searchInput" placeholder="Search Recipes..."/>
+            <input type="text" id="searchInput" placeholder="Search recipes by name or hashtag..." />
+            <input type="text" id="hashtagFilterInput" placeholder="Filter by hashtag (e.g. #spicy)" />
         </div>
     </header>
 

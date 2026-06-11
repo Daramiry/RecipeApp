@@ -1,0 +1,46 @@
+/* Global theme variables used across pages */
+:root{
+  --bg: #f7f2e9;
+  --text: #4a3b2a;
+  --title: #3a2a1a;
+  --muted: #6b5845;
+  --accent: #c9a97a;
+  --accent-hover: #b89263;
+  --fav-bg: #d4b48a;
+  --fav-hover: #c39a6b;
+}
+
+/* Dark theme override */
+.dark{
+  --bg: #1e1e1f;
+  --text: #e6e1dc;
+  --title: #fff9f2;
+  --muted: #cfc3b6;
+  --accent: #6b8c72;
+  --accent-hover: #56755d;
+  --fav-bg: #5a3b2a;
+  --fav-hover: #7a4b34;
+  --danger: #c76d5d;
+  --danger-hover: #a84f44;
+}
+
+/* Basic helpers to ensure background/text update when variables change */
+html, body {
+  background: var(--bg);
+  color: var(--text);
+}
+
+/* Surface / cards / inputs */
+:root{
+  --surface: #fff8ef;
+  --input-bg: #ffffff;
+  --header-bg: #fff8ef;
+  --danger: #c76d5d;
+  --danger-hover: #a84f44;
+}
+
+.dark{
+  --surface: #2a2a2b;
+  --input-bg: #222222;
+  --header-bg: #2a2a2b;
+}

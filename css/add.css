@@ -1,16 +1,31 @@
 body {
-    background: #f4eee2;
+    background: var(--bg);
     font-family: "Georgia", serif;
-    color: #4a3f35;
+    color: var(--text);
     margin: 0;
     padding: 0;
 }
 
 header {
     text-align: center;
-    background: #fff8ef;
+    background: var(--header-bg);
     padding: 20px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+
+.nav-btn {
+  background: var(--accent);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 16px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.nav-btn:hover {
+  background: var(--accent-hover);
 }
 
 .title {
@@ -21,10 +36,10 @@ header {
 .form-container {
     max-width: 600px;
     margin: 30px auto;
-    background: #fff8ef;
+    background: var(--surface);
     padding: 25px;
     border-radius: 12px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    box-shadow: 0 0 10px rgba(0,0,0,0.06);
 }
 
 label {
@@ -38,8 +53,9 @@ input, textarea {
     padding: 10px;
     margin-top: 5px;
     border-radius: 8px;
-    border: 1px solid #c8b8a8;
-    background: #fff;
+    border: 1px solid var(--muted);
+    background: var(--input-bg);
+    color: var(--text);
     font-size: 1rem;
 }
 
@@ -52,23 +68,7 @@ textarea {
     margin-top: 20px;
     width: 100%;
     padding: 12px;
-    background: #b48a60;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    font-size: 1.2rem;
-    cursor: pointer;
-}
-
-.save-btn:hover {
-    background: #9c7750;
-}
-
-.save-btn {
-    margin-top: 20px;
-    width: 100%;
-    padding: 12px;
-    background: #b48a60;
+    background: var(--accent);
     color: white;
     border: none;
     border-radius: 8px;
@@ -78,28 +78,28 @@ textarea {
 }
 
 .save-btn:hover {
-    background: #9c7750;
+    background: var(--accent-hover);
 }
 
 /* 🧁 Recently Added Section */
 .recent-section {
-  display: inline-block;           /* makes the box fit its content */
-  max-width: 90%;                  /* prevents it from getting too wide */
+  display: block;
+  max-width: 900px;                 /* reasonable max width for readability */
+  margin: 2rem auto;                /* center and add space from edges */
   padding: 1rem 1.5rem;
-  background-color: #f8f3e9;
-  border: 1px solid #d8c7a1;
+  background-color: var(--surface);
+  border: 1px solid rgba(0,0,0,0.04);
   border-radius: 10px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
   font-family: 'Georgia', serif;
-  color: #4a3b2b;
-  margin-top: 2rem;
+  color: var(--text);
 }
 
 .recent-section h2 {
   margin-bottom: 0.8rem;
   font-size: 1.3rem;
-  color: #3b2a1a;
-  border-bottom: 1px solid #d8c7a1;
+  color: var(--title);
+  border-bottom: 1px solid rgba(0,0,0,0.04);
   padding-bottom: 0.3rem;
   text-align: left;
 }
@@ -114,13 +114,13 @@ textarea {
 .recent-list p {
   margin: 0.4rem 0;
   padding: 0.4rem 0.6rem;
-  background-color: #fffaf3;
+  background-color: var(--input-bg);
   border-radius: 6px;
-  border: 1px solid #e0d3b8;
+  border: 1px solid rgba(0,0,0,0.04);
   transition: background-color 0.3s ease;
   width: fit-content;              /* ✅ adjusts width to text length */
 }
 
 .recent-list p:hover {
-  background-color: #f0e4c8;
+  background-color: rgba(0,0,0,0.02);
 }

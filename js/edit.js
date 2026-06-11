@@ -1,7 +1,9 @@
 document.addEventListener("DOMContentLoaded", () => {
+  function safeParse(key, def = []) { try { const v = localStorage.getItem(key); return v ? JSON.parse(v) : def; } catch (e) { console.error('Corrupt localStorage for', key, e); localStorage.removeItem(key); return def; } }
+
   const id = localStorage.getItem("editRecipeId");
-  const recipes = JSON.parse(localStorage.getItem("recipes")) || [];
-  const recipe = recipes.find(r => r.id == id);
+  const recipes = safeParse("recipes", []);
+  const recipe = recipes.find(r => String(r.id) === String(id));
 
   const nameInput = document.getElementById("editName");
   const ingredientsInput = document.getElementById("editIngredients");
@@ -11,39 +13,45 @@ document.addEventListener("DOMContentLoaded", () => {
   const deleteBtn = document.getElementById("deleteBtn");
   const cancelBtn = document.getElementById("cancelBtn");
 
-  // Pre-fill form
-  if (recipe) {
-    nameInput.value = recipe.name;
-    ingredientsInput.value = recipe.ingredients.join("\n");
-    instructionsInput.value = recipe.instructions.join("\n");
-    hashtagsInput.value = recipe.hashtags.join(" ");
+  // If recipe not found, redirect
+  if (!recipe) {
+    alert('Recipe not found.');
+    return window.location.href = 'toc.html';
   }
 
-  // Save changes
-  form.addEventListener("submit", e => {
-    e.preventDefault();
-    recipe.name = nameInput.value.trim();
-    recipe.ingredients = ingredientsInput.value.trim().split("\n").filter(Boolean);
-    recipe.instructions = instructionsInput.value.trim().split("\n").filter(Boolean);
-    recipe.hashtags = hashtagsInput.value.trim().split(" ").filter(Boolean);
+  // Pre-fill form (guard inputs)
+  if (nameInput) nameInput.value = recipe.name || '';
+  if (ingredientsInput) ingredientsInput.value = Array.isArray(recipe.ingredients) ? recipe.ingredients.join("\n") : '';
+  if (instructionsInput) instructionsInput.value = Array.isArray(recipe.instructions) ? recipe.instructions.join("\n") : '';
+  if (hashtagsInput) hashtagsInput.value = Array.isArray(recipe.hashtags) ? recipe.hashtags.join(" ") : '';
 
-    localStorage.setItem("recipes", JSON.stringify(recipes));
-    alert("Recipe updated!");
-    window.location.href = "view.html";
-  });
+  // Save changes
+  if (form) {
+    form.addEventListener("submit", e => {
+      e.preventDefault();
+      recipe.name = nameInput ? nameInput.value.trim() : recipe.name;
+      recipe.ingredients = ingredientsInput ? ingredientsInput.value.trim().split("\n").filter(Boolean) : recipe.ingredients;
+      recipe.instructions = instructionsInput ? instructionsInput.value.trim().split("\n").filter(Boolean) : recipe.instructions;
+      recipe.hashtags = hashtagsInput ? hashtagsInput.value.trim().split(" ").filter(Boolean) : recipe.hashtags;
+
+      localStorage.setItem("recipes", JSON.stringify(recipes));
+      alert("Recipe updated!");
+      window.location.href = "view.html";
+    });
+  }
 
   // Delete recipe
-  deleteBtn.addEventListener("click", () => {
-    if (confirm("Delete this recipe?")) {
-      const updated = recipes.filter(r => r.id != id);
-      localStorage.setItem("recipes", JSON.stringify(updated));
-      alert("Recipe deleted!");
-      window.location.href = "toc.html";
-    }
-  });
+  if (deleteBtn) {
+    deleteBtn.addEventListener("click", () => {
+      if (confirm("Delete this recipe?")) {
+        const updated = recipes.filter(r => String(r.id) !== String(id));
+        localStorage.setItem("recipes", JSON.stringify(updated));
+        alert("Recipe deleted!");
+        window.location.href = "toc.html";
+      }
+    });
+  }
 
   // Cancel edit
-  cancelBtn.addEventListener("click", () => {
-    window.location.href = "view.html";
-  });
+  if (cancelBtn) cancelBtn.addEventListener("click", () => { window.location.href = "view.html"; });
 });

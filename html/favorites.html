@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Favorite Recipes</title>
+    <script>/* apply saved theme immediately */(function(){try{if(localStorage.getItem('theme')==='dark')document.documentElement.classList.add('dark')}catch(e){}})();</script>
+    <link rel="stylesheet" href="../css/theme.css">
+    <link rel="stylesheet" href="../css/favorites.css">
+    <script src="../js/favorites.js" defer></script>
+</head>
+<body>
+    <header>
+        <h1 class="title">Your Favorite Recipes</h1>
+        <nav>
+            <button class="nav-btn" id="backBtn">Back to Cookbook</button>
+        </nav>
+    </header>
+
+    <main>
+        <section class="favorites-section">
+            <div id="favoritesList" class="favorites-list">
+                <p>Loading your saved favorite recipes...</p>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

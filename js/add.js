@@ -1,101 +1,104 @@
-// ../js/add.js
+﻿// add.js
 
 document.addEventListener("DOMContentLoaded", () => {
-  const form = document.getElementById("recipeForm");
+    function safeParse(key, def = []) { try { const v = localStorage.getItem(key); return v ? JSON.parse(v) : def; } catch (e) { console.error('Corrupt localStorage for', key, e); localStorage.removeItem(key); return def; } }
 
-  form.addEventListener("submit", (e) => {
-    e.preventDefault();
-
-    const nameInput = document.getElementById("recipeName");
-    const ingredientsInput = document.getElementById("ingredients");
-    const instructionsInput = document.getElementById("instruction");
-    const hashtagsInput = document.getElementById("hashtags");
-
-    const name = nameInput.value.trim();
-    const ingredientsRaw = ingredientsInput.value.trim();
-    const instructionsRaw = instructionsInput.value.trim();
-    const hashtagsRaw = hashtagsInput.value.trim();
-
-    // Basic validation
-    if (!name || !ingredientsRaw || !instructionsRaw) {
-      alert("Please fill in recipe name, ingredients, and instructions.");
-      return;
-    }
-
-    // Turn textareas into arrays (one per line)
-    const ingredients = ingredientsRaw
-      .split("\n")
-      .map(line => line.trim())
-      .filter(line => line.length > 0);
-
-    const instructions = instructionsRaw
-      .split("\n")
-      .map(line => line.trim())
-      .filter(line => line.length > 0);
-
-    // Optional: split hashtags by space
-    const hashtags = hashtagsRaw
-      ? hashtagsRaw.split(" ").map(tag => tag.trim()).filter(tag => tag.length > 0)
-      : [];
-
-    // Recipe object
-    const newRecipe = {
-      id: Date.now(),          // simple unique id
-      name,
-      ingredients,
-      instructions,
-      hashtags
-    };
-
-    // Load existing recipes
-    const existing = localStorage.getItem("recipes");
-    const recipes = existing ? JSON.parse(existing) : [];
-
-    // Add new one
-    recipes.push(newRecipe);
-
-    // Save back
-    localStorage.setItem("recipes", JSON.stringify(recipes));
-
-    console.log("Saved recipe:", newRecipe);
-    console.log("All recipes:", recipes);
-
-    // For now, just clear the form so we can see it works
-    form.reset();
-    alert("Recipe saved!");
-  });
-});
-
-
-// Function to update the "Recently Added" box
-function updateRecentList() {
-    const recentList = document.getElementById("recentList");
-    const existing = localStorage.getItem("recipes");
-    const recipes = existing ? JSON.parse(existing) : [];
-
-    if (recipes.length === 0) {
-        recentList.innerHTML = "<p> No recipes added yet.</p>";
-        return;
-    }
-
-    // Get last 5 recipes (Most Recent First)
-    const recent = recipes.slice(-5).reverse();
-
-    // Build HTML list
-    recentList.innerHTML = recent
-    .map(r =>  `<p>${r.name}</p>`)
-    .join("");
-}
-
-document.addEventListener("DOMContentLoaded", () => {
     const form = document.getElementById("recipeForm");
+    const backBtn = document.getElementById("backBtn");
+    const recentList = document.getElementById("recentList");
 
-    form.addEventListener("submit", (e) => {
+    function updateRecentList() {
+        const recipes = safeParse("recipes", []);
+
+        if (recipes.length === 0) {
+            recentList.innerHTML = "<p>No recipes added yet.</p>";
+            return;
+        }
+
+        const recent = recipes.slice(-5).reverse();
+        recentList.innerHTML = "";
+        recent.forEach(r => {
+            const p = document.createElement('p');
+            p.className = 'recent-item';
+            p.dataset.id = r.id;
+            p.textContent = r.name;
+            p.style.cursor = 'pointer';
+            p.tabIndex = 0;
+            p.addEventListener('click', () => {
+                localStorage.setItem('selectedRecipe', String(r.id));
+                window.location.href = 'view.html';
+            });
+            p.addEventListener('keydown', (ev) => {
+                if (ev.key === 'Enter' || ev.key === ' ') {
+                    ev.preventDefault();
+                    p.click();
+                }
+            });
+            recentList.appendChild(p);
+        });
+    }
+
+    function saveRecipe(recipe) {
+        const recipes = safeParse("recipes", []);
+        recipes.push(recipe);
+        localStorage.setItem("recipes", JSON.stringify(recipes));
+    }
+
+    if (backBtn) {
+        backBtn.addEventListener("click", () => {
+            window.location.href = "toc.html";
+        });
+    }
+
+    if (form) {
+        form.addEventListener("submit", (e) => {
         e.preventDefault();
-        // ... your save logic ...
-        updateRecentList(); // keep this inside submit
-    });
 
-    // Call once when page loades, inside DOMContentloaded
+        const nameInput = document.getElementById("recipeName");
+        const ingredientsInput = document.getElementById("ingredients");
+        const instructionsInput = document.getElementById("instruction");
+        const hashtagsInput = document.getElementById("hashtags");
+
+        const name = nameInput.value.trim();
+        const ingredientsRaw = ingredientsInput.value.trim();
+        const instructionsRaw = instructionsInput.value.trim();
+        const hashtagsRaw = hashtagsInput.value.trim();
+
+        if (!name || !ingredientsRaw || !instructionsRaw) {
+            alert("Please fill in recipe name, ingredients, and instructions.");
+            return;
+        }
+
+        const ingredients = ingredientsRaw
+            .split("\n")
+            .map(line => line.trim())
+            .filter(line => line.length > 0);
+
+        const instructions = instructionsRaw
+            .split("\n")
+            .map(line => line.trim())
+            .filter(line => line.length > 0);
+
+        const hashtags = hashtagsRaw
+            ? hashtagsRaw.split(" ").map(tag => tag.trim()).filter(tag => tag.length > 0)
+            : [];
+
+        const newRecipe = {
+            id: Date.now(),
+            name,
+            ingredients,
+            instructions,
+            hashtags
+        };
+
+            saveRecipe(newRecipe);
+            form.reset();
+            updateRecentList();
+            alert("Recipe saved!");
+    });
+    } else {
+        console.warn('Add form not found on this page.');
+    }
+
     updateRecentList();
-})
+});
