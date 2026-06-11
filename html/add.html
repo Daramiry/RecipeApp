@@ -30,7 +30,13 @@
 
             <label for="hashtags">Hashtags *</label>
             <input type="text" id="hashtags" placeholder="#spicy #italian #grilled" required>
-            <!-- Add this Button -->
+
+            <label for="recipeImage">Recipe Image</label>
+            <input type="file" id="recipeImage" accept="image/*">
+            <div class="image-preview-container">
+                <img id="imagePreview" class="image-preview" alt="Image preview" style="display:none;" />
+            </div>
+
             <button type="submit" class="save-btn">Save Recipe</button>
         </form>
 

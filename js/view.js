@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const ingredientsEl = document.getElementById("ingredientsList");
     const instructionsEl = document.getElementById("instructionsList");
     const hashtagsEl = document.getElementById("hashtagsList");
+    const imageContainer = document.getElementById("recipeImageContainer");
     const backBtn = document.getElementById("backBtn");
 
     // Load selected recipe
@@ -28,6 +29,16 @@ document.addEventListener('DOMContentLoaded', () => {
                     li.textContent = item;
                     ingredientsEl.appendChild(li);
                 });
+            }
+        }
+
+        if (imageContainer) {
+            imageContainer.innerHTML = "";
+            if (recipe.imageData) {
+                const img = document.createElement("img");
+                img.src = recipe.imageData;
+                img.alt = recipe.name ? `${recipe.name} image` : "Recipe image";
+                imageContainer.appendChild(img);
             }
         }
 

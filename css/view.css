@@ -55,6 +55,17 @@ main {
     box-shadow: 0 2px 12px rgba(0,0,0,0.06);
 }
 
+.recipe-image-container {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.recipe-image-container img {
+    max-width: 100%;
+    border-radius: 14px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+}
+
 #recipeDetails h2 {
     margin-top: 0;
     color: var(--title);
