@@ -1,5 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&family=Montserrat:wght@500;600;700&family=Nunito:wght@400;600&display=swap');
+
 /* Global theme variables used across pages */
 :root{
+  --font-sans: 'Nunito', sans-serif;
+  --font-heading: 'Montserrat', sans-serif;
+  --font-script: 'Gloria Hallelujah', cursive;
   --bg: #f7f2e9;
   --text: #4a3b2a;
   --title: #3a2a1a;
@@ -12,6 +17,9 @@
 
 /* Dark theme override */
 .dark{
+  --font-sans: 'Nunito', sans-serif;
+  --font-heading: 'Montserrat', sans-serif;
+  --font-script: 'Gloria Hallelujah', cursive;
   --bg: #1e1e1f;
   --text: #e6e1dc;
   --title: #fff9f2;
@@ -28,6 +36,15 @@
 html, body {
   background: var(--bg);
   color: var(--text);
+  font-family: var(--font-sans);
+}
+
+h1, h2, h3, h4, h5, .title {
+  font-family: var(--font-heading);
+}
+
+.logo, .tagline, .description, .recipe-card h3, .favorite-card h2 {
+  font-family: var(--font-script);
 }
 
 /* Surface / cards / inputs */
