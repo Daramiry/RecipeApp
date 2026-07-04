@@ -1,35 +1,79 @@
 body {
-	background: var(--bg);
-	color: var(--text);
-	font-family: Georgia, serif;
-	margin: 0;
+    background: var(--bg);
+    font-family: "Georgia", serif;
+    color: var(--text);
+    margin: 0;
+    padding: 0;
 }
 
 header {
-	background: var(--header-bg);
-	padding: 18px;
-	text-align: center;
-	box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+    text-align: center;
+    background: var(--header-bg);
+    padding: 20px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
 }
 
-.form-container {
-	max-width: 700px;
-	margin: 24px auto;
-	background: var(--surface);
-	padding: 20px;
-	border-radius: 10px;
-	box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+h1 {
+    font-size: 2rem;
+    margin: 0;
+}
+
+main {
+    padding: 24px 16px;
+}
+
+form {
+    max-width: 600px;
+    margin: 30px auto;
+    background: var(--surface);
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.06);
+}
+
+label {
+    display: block;
+    margin-top: 15px;
+    font-weight: bold;
 }
 
 input, textarea {
-	width: 100%;
-	padding: 10px;
-	border-radius: 8px;
-	border: 1px solid var(--muted);
-	background: var(--input-bg);
-	color: var(--text);
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border-radius: 8px;
+    border: 1px solid var(--muted);
+    background: var(--input-bg);
+    color: var(--text);
+    font-size: 1rem;
+    box-sizing: border-box;
 }
 
-.save-btn { background: var(--accent); color: white; border: none; padding: 10px 14px; border-radius: 8px; cursor: pointer; }
-.save-btn:hover { background: var(--accent-hover); }
+textarea {
+    height: 100px;
+    resize: none;
+}
+
+.edit-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.edit-actions button {
+    flex: 1 1 140px;
+    padding: 12px;
+    background: var(--accent);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.edit-actions button:hover {
+    background: var(--accent-hover);
+}
 
