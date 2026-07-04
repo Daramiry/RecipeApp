@@ -16,10 +16,29 @@
 
     <main>
         <form id="editForm">
+            <label for="editName">Recipe Name</label>
             <input type="text" id="editName" placeholder="Recipe Name"/>
+
+            <label for="editIngredients">Ingredients</label>
             <textarea id="editIngredients" placeholder="Ingredients (one per line)"></textarea>
+
+            <label for="editInstructions">Instructions</label>
             <textarea id="editInstructions" placeholder="Instruction (one per line)"></textarea>
+
+            <label for="editCookTime">Estimated Cook Time</label>
+            <input type="text" id="editCookTime" placeholder="e.g. 30 minutes"/>
+
+            <label for="editServings">Serving Size</label>
+            <input type="text" id="editServings" placeholder="e.g. 4 servings"/>
+
+            <label for="editHashtags">Hashtags</label>
             <input type="text" id="editHashtags" placeholder="Hashtags (space-seperated)"/>
+
+            <label for="recipeImage">Recipe Image</label>
+            <input type="file" id="recipeImage" accept="image/*">
+            <div class="image-preview-container">
+                <img id="imagePreview" class="image-preview" alt="Image preview" style="display:none;" />
+            </div>
             
             <div class="edit-actions">
                 <button type="submit">Save Changes</button>

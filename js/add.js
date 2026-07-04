@@ -85,11 +85,15 @@ document.addEventListener("DOMContentLoaded", () => {
             const nameInput = document.getElementById("recipeName");
             const ingredientsInput = document.getElementById("ingredients");
             const instructionsInput = document.getElementById("instruction");
+            const cookTimeInput = document.getElementById("cookTime");
+            const servingsInput = document.getElementById("servings");
             const hashtagsInput = document.getElementById("hashtags");
 
             const name = nameInput.value.trim();
             const ingredientsRaw = ingredientsInput.value.trim();
             const instructionsRaw = instructionsInput.value.trim();
+            const cookTime = cookTimeInput ? cookTimeInput.value.trim() : "";
+            const servings = servingsInput ? servingsInput.value.trim() : "";
             const hashtagsRaw = hashtagsInput.value.trim();
 
             if (!name || !ingredientsRaw || !instructionsRaw) {
@@ -132,6 +136,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 name,
                 ingredients,
                 instructions,
+                cookTime,
+                servings,
                 hashtags,
                 imageData
             };

@@ -6,6 +6,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // Get elements
     const titleEl= document.getElementById("recipeTitle");
     const ingredientsEl = document.getElementById("ingredientsList");
+    const cookTimeEl = document.getElementById("cookTimeDisplay");
+    const servingsEl = document.getElementById("servingsDisplay");
     const instructionsEl = document.getElementById("instructionsList");
     const hashtagsEl = document.getElementById("hashtagsList");
     const imageContainer = document.getElementById("recipeImageContainer");
@@ -41,6 +43,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 imageContainer.appendChild(img);
             }
         }
+
+        if (cookTimeEl) cookTimeEl.textContent = recipe.cookTime || "Not provided";
+        if (servingsEl) servingsEl.textContent = recipe.servings || "Not provided";
 
         if (instructionsEl) {
             instructionsEl.innerHTML = "";

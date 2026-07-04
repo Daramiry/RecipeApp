@@ -58,12 +58,38 @@ main {
 .recipe-image-container {
     margin-bottom: 20px;
     text-align: center;
+    min-height: 120px;
 }
 
 .recipe-image-container img {
     max-width: 100%;
     border-radius: 14px;
     box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+}
+
+.recipe-meta-top {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.recipe-meta-box {
+    flex: 1 1 220px;
+    background: var(--input-bg);
+    border: 1px solid rgba(0,0,0,0.05);
+    border-radius: 10px;
+    padding: 12px 14px;
+}
+
+.recipe-meta-box h2 {
+    margin: 0 0 6px;
+    font-size: 1.05rem;
+}
+
+.recipe-meta-box p {
+    margin: 0;
+    color: var(--text);
 }
 
 #recipeDetails h2 {

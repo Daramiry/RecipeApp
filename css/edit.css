@@ -54,6 +54,26 @@ textarea {
     resize: none;
 }
 
+input[type="file"] {
+    margin-top: 8px;
+    padding: 8px 10px;
+    border-radius: 8px;
+    border: 1px solid var(--muted);
+    background: var(--input-bg);
+    color: var(--text);
+}
+
+.image-preview-container {
+    margin-top: 12px;
+    text-align: center;
+}
+
+.image-preview {
+    max-width: 100%;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
 .edit-actions {
     display: flex;
     flex-wrap: wrap;
